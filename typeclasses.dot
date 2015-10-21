@@ -28,7 +28,7 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	(\|\|\|) :: a b d -\> a c d -\> a (Either b c) d\l }"]
 	arrowapply [label="{ ArrowApply }|{ app :: a (a b c, b) c }"]
 	arrowloop [label="{ ArrowLoop }|{ loop :: a (b, d) (c, d) -\> a b c }"]
-	cca [label="{Causal Commutive Arrows(CCA) }"]
+	cca [label="{Causal Commutative Arrows(CCA) }"]
 	monoid [label="{ Monoid m}|{ mempty :: m \l\
 	mappend :: m -\> m -\> m \l}"]
 	foldable [label="{ Foldable t}|{ foldMap :: Monoid m =\> (a -\> m) -\> t a -\> m \l\
