@@ -36,10 +36,10 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	traversable [label="{ Traversable }|{ traverse :: Applicative f =\> (a -\> f b) -\> t a -\> f (t b) \l\
 	sequenceA :: Applicative f =\> t (f a) -\> f (t a) \l }"]
 	contravariant [label="{ Contravariant }|{ contramap :: (a -\> b) -\>  b -\> f a }"]
-	monadstate [label="{ MonadState \n s m \| m -\> s }|{ get :: m s \l\
+	monadstate [label="{ MonadState s m \n m -\> s }|{ get :: m s \l\
 	put :: s -\> m () \l\
 	state :: (s -\> (a, s)) -\> m a \l}"]
-	monaderror [label="{ MonadError \n e m \| m -\> e }|{ throwErroe :: e -\> m a \l\
+	monaderror [label="{ MonadError e m \n m -\> e }|{ throwErroe :: e -\> m a \l\
 	catchError :: m a -\> (e -\> m a) -\> m a \l }"]
 	comonad [label="{ Comonad w }|{ extract :: w a -\> a \l }"]
 	bifunctor [label="{ Bifunctor p }|{ bimap :: (a -\> b) -\> (c -\> d) -\> p a c -\> p b d \l\
@@ -85,7 +85,7 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	closed [label="{ Closed p }|{ closed :: p a b -\> p (x -\> a) (x -\> b) }"]
 	profunctorfunctor [label="{ ProfunctorFunctor }|{ promap :: Profunctor p =\> (p :-\> q) -\> t :-\> p :-\> t q \l }"]
 	profunctormonad [label="{ ProfunctorMonad t }|{ proreturn :: Profunctor =\> p :-\> t p \l\
-	prooin :: Profunctor p =\> t (t p) :-\> t p \l }"]
+	projoin :: Profunctor p =\> t (t p) :-\> t p \l }"]
 	profunctorcomonad [label="{ ProfunctorComonad t }|{ proextract :: Profunctor p =\> t p :-\> p \l\
 	produplicate :: Profunctor p =\> t p :-\> t (t p) \l }"]
 	representable [label="{ Representable p }|{ type Rep p :: * -\> * \l\

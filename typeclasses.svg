@@ -309,8 +309,8 @@
 <!-- monadstate -->
 <g id="node21" class="node"><title>monadstate</title>
 <polygon fill="none" stroke="black" points="2136.73,-727 2136.73,-813 2299.15,-813 2299.15,-727 2136.73,-727"/>
-<text text-anchor="middle" x="2217.81" y="-797.8" font-family="Times,serif" font-size="14.00">MonadState </text>
-<text text-anchor="middle" x="2217.81" y="-783.8" font-family="Times,serif" font-size="14.00"> s m | m &#45;&gt; s</text>
+<text text-anchor="middle" x="2217.48" y="-797.8" font-family="Times,serif" font-size="14.00">MonadState s m </text>
+<text text-anchor="middle" x="2217.48" y="-783.8" font-family="Times,serif" font-size="14.00"> m &#45;&gt; s</text>
 <polyline fill="none" stroke="black" points="2136.73,-777 2299.15,-777 "/>
 <text text-anchor="start" x="2144.73" y="-761.8" font-family="Times,serif" font-size="14.00">get :: m s </text>
 <text text-anchor="start" x="2144.73" y="-747.8" font-family="Times,serif" font-size="14.00">put :: s &#45;&gt; m () </text>
@@ -324,8 +324,8 @@
 <!-- monaderror -->
 <g id="node22" class="node"><title>monaderror</title>
 <polygon fill="none" stroke="black" points="2103.25,-636 2103.25,-708 2332.62,-708 2332.62,-636 2103.25,-636"/>
-<text text-anchor="middle" x="2217.6" y="-692.8" font-family="Times,serif" font-size="14.00">MonadError </text>
-<text text-anchor="middle" x="2217.6" y="-678.8" font-family="Times,serif" font-size="14.00"> e m | m &#45;&gt; e</text>
+<text text-anchor="middle" x="2217.66" y="-692.8" font-family="Times,serif" font-size="14.00">MonadError e m </text>
+<text text-anchor="middle" x="2217.66" y="-678.8" font-family="Times,serif" font-size="14.00"> m &#45;&gt; e</text>
 <polyline fill="none" stroke="black" points="2103.25,-672 2332.62,-672 "/>
 <text text-anchor="start" x="2111.25" y="-656.8" font-family="Times,serif" font-size="14.00">throwErroe :: e &#45;&gt; m a </text>
 <text text-anchor="start" x="2111.25" y="-642.8" font-family="Times,serif" font-size="14.00">catchError :: m a &#45;&gt; (e &#45;&gt; m a) &#45;&gt; m a </text>
@@ -684,11 +684,11 @@
 </g>
 <!-- profunctormonad -->
 <g id="node49" class="node"><title>profunctormonad</title>
-<polygon fill="none" stroke="black" points="1323.31,-162 1323.31,-220 1556.24,-220 1556.24,-162 1323.31,-162"/>
-<text text-anchor="middle" x="1439.77" y="-204.8" font-family="Times,serif" font-size="14.00">ProfunctorMonad t</text>
-<polyline fill="none" stroke="black" points="1323.31,-198 1556.24,-198 "/>
-<text text-anchor="start" x="1331.31" y="-182.8" font-family="Times,serif" font-size="14.00">proreturn :: Profunctor =&gt; p :&#45;&gt; t p </text>
-<text text-anchor="start" x="1331.31" y="-168.8" font-family="Times,serif" font-size="14.00">prooin :: Profunctor p =&gt; t (t p) :&#45;&gt; t p </text>
+<polygon fill="none" stroke="black" points="1321.36,-162 1321.36,-220 1558.19,-220 1558.19,-162 1321.36,-162"/>
+<text text-anchor="middle" x="1439.33" y="-204.8" font-family="Times,serif" font-size="14.00">ProfunctorMonad t</text>
+<polyline fill="none" stroke="black" points="1321.36,-198 1558.19,-198 "/>
+<text text-anchor="start" x="1329.36" y="-182.8" font-family="Times,serif" font-size="14.00">proreturn :: Profunctor =&gt; p :&#45;&gt; t p </text>
+<text text-anchor="start" x="1329.36" y="-168.8" font-family="Times,serif" font-size="14.00">projoin :: Profunctor p =&gt; t (t p) :&#45;&gt; t p </text>
 </g>
 <!-- profunctormonad&#45;&gt;profunctorfunctor -->
 <g id="edge14" class="edge"><title>profunctormonad&#45;&gt;profunctorfunctor</title>
