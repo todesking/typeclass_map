@@ -73,7 +73,14 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	traversable1 [label="{ Traversable1 }|{ traverse1 :: Apply f =\> (a -\> f b) -\> t a -\> f (t b) \l\
 	sequence1 :: Apply f =\> t (f b) -\> f (t b) \l }"]
 	ob [label="{ Ob k }|{ semiid :: k a a \l }"]
-	
+	profunctor [label="{ Profunctor p }|{ dimap :: (a -\>b) (c -\> d) -\> p b c -\> p a d \l\
+	lmap :: (a -\> b) -\> p b c -\> p a c \l\
+	rmap :: (b -\> c) -\> p a b -\> p a c \l }"]
+	costrong [label="{ Costrong p \n (Analogue of ArrowLoop where loop = unfirst) }|{ unfirst :: p (a, d) (b, d) -\> p a b \l\
+	unsecond :: p (d, a) (d, b) -\> p a b \l }"]
+
+	costrong -> profunctor
+	costrong -> arrowloop [style="dashed" arrowhead="none"]
 	ob -> semigroupoid
 	traversable1 -> traversable
 	traversable1 -> apply [style="dashed"]
