@@ -78,7 +78,33 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	rmap :: (b -\> c) -\> p a b -\> p a c \l }"]
 	costrong [label="{ Costrong p \n (Analogue of ArrowLoop where loop = unfirst) }|{ unfirst :: p (a, d) (b, d) -\> p a b \l\
 	unsecond :: p (d, a) (d, b) -\> p a b \l }"]
+	choice [label="{ Choice p\n(a.k.a ProChoice?) }|{ left' :: p a b -\> p (Either a c) (Either b c) \l\
+	right' :: p a b -\> p (Either c a) (Either c b) \l }"]
+	profunctoradjunction [label="{ ProfunctorAdjunction f u \n f -\> u, u -\> f }|{ unit :: Profunctor p =\> p :-\> u (f p) \l\
+	counit :: Profunctor p =\> f (u p) :-\> p \l }"]
+	closed [label="{ Closed p }|{ closed :: p a b -\> p (x -\> a) (x -\> b) }"]
+	profunctorfunctor [label="{ ProfunctorFunctor }|{ promap :: Profunctor p =\> (p :-\> q) -\> t :-\> p :-\> t q \l }"]
+	profunctormonad [label="{ ProfunctorMonad t }|{ proreturn :: Profunctor =\> p :-\> t p \l\
+	prooin :: Profunctor p =\> t (t p) :-\> t p \l }"]
+	profunctorcomonad [label="{ ProfunctorComonad t }|{ proextract :: Profunctor p =\> t p :-\> p \l\
+	produplicate :: Profunctor p =\> t p :-\> t (t p) \l }"]
+	representable [label="{ Representable p }|{ type Rep p :: * -\> * \l\
+	tabulate :: (d -\> Rep p c) -\> p d c \l }"]
+	corepresentable [label="{ Corepresentable p }|{ type Corep :: * -\> * \l\
+	cotabulate :: (Corep p d -\> c) -\> p d c \l }"]
+	cosieve [label="{ Cosieve p f \n p -\> f }|{ cosieve :: p a b -\> f a -\> b \l }"]
+	sieve [label="{ Sieve p f \n p -\> f }|{ p a b -\> a -\> f b \l }"]
 
+	sieve -> {profunctor, functor}
+	cosieve -> {profunctor, functor}
+	corepresentable -> {costrong, cosieve}
+	representable -> {strong, sieve}
+	profunctormonad -> profunctorfunctor
+	profunctorcomonad -> profunctorfunctor
+	profunctorfunctor -> profunctor [style="dashed"]
+	closed -> profunctor
+	profunctoradjunction -> profunctor
+	choice -> profunctor
 	costrong -> profunctor
 	costrong -> arrowloop [style="dashed" arrowhead="none"]
 	ob -> semigroupoid
