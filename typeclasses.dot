@@ -101,6 +101,8 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	decidable [label="{ Decidable f }|{ lose :: (a -\> Void) -\> f a \l\
 	choose :: (a -\> Either b c) -\> f b -\> f c -\> f a \l }"]
 
+	monadplus -> alternative
+	monad -> applicative
 	divisible -> contravariant
 	decidable -> divisible
 	strong -> profunctor
