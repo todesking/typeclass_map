@@ -94,7 +94,10 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	cotabulate :: (Corep p d -\> c) -\> p d c \l }"]
 	cosieve [label="{ Cosieve p f \n p -\> f }|{ cosieve :: p a b -\> f a -\> b \l }"]
 	sieve [label="{ Sieve p f \n p -\> f }|{ p a b -\> a -\> f b \l }"]
+	strong [label="{ Strong p }|{ first' :: p a b -\> p (a, c) (b, c) \l\
+	second' :: p a b -\> p (c, a) (c, b) \l }"]
 
+	strong -> profunctor
 	sieve -> {profunctor, functor}
 	cosieve -> {profunctor, functor}
 	corepresentable -> {costrong, cosieve}
