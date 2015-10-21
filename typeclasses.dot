@@ -96,7 +96,13 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	sieve [label="{ Sieve p f \n p -\> f }|{ p a b -\> a -\> f b \l }"]
 	strong [label="{ Strong p }|{ first' :: p a b -\> p (a, c) (b, c) \l\
 	second' :: p a b -\> p (c, a) (c, b) \l }"]
+	divisible [label="{ Divisible f }|{ divide :: (a -\> (b, c)) -\> f b -\> f c -\> f a \l\
+	conquer :: f a \l }"]
+	decidable [label="{ Decidable f }|{ lose :: (a -\> Void) -\> f a \l\
+	choose :: (a -\> Either b c) -\> f b -\> f c -\> f a \l }"]
 
+	divisible -> contravariant
+	decidable -> divisible
 	strong -> profunctor
 	sieve -> {profunctor, functor}
 	cosieve -> {profunctor, functor}
