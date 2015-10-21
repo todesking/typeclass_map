@@ -718,16 +718,16 @@
 </g>
 <!-- sieve -->
 <g id="node54" class="node"><title>sieve</title>
-<polygon fill="none" stroke="black" points="1059.01,-645 1059.01,-703 1166.22,-703 1166.22,-645 1059.01,-645"/>
-<text text-anchor="middle" x="1112.15" y="-687.8" font-family="Times,serif" font-size="14.00">Sieve p f </text>
-<text text-anchor="middle" x="1112.15" y="-673.8" font-family="Times,serif" font-size="14.00"> p &#45;&gt; f</text>
-<polyline fill="none" stroke="black" points="1059.01,-667 1166.22,-667 "/>
-<text text-anchor="start" x="1067.01" y="-651.8" font-family="Times,serif" font-size="14.00">p a b &#45;&gt; a &#45;&gt; f b </text>
+<polygon fill="none" stroke="black" points="1037.24,-645 1037.24,-703 1187.99,-703 1187.99,-645 1037.24,-645"/>
+<text text-anchor="middle" x="1112.37" y="-687.8" font-family="Times,serif" font-size="14.00">Sieve p f </text>
+<text text-anchor="middle" x="1112.37" y="-673.8" font-family="Times,serif" font-size="14.00"> p &#45;&gt; f</text>
+<polyline fill="none" stroke="black" points="1037.24,-667 1187.99,-667 "/>
+<text text-anchor="start" x="1045.24" y="-651.8" font-family="Times,serif" font-size="14.00">sieve :: p a b &#45;&gt; a &#45;&gt; f b </text>
 </g>
 <!-- representable&#45;&gt;sieve -->
 <g id="edge17" class="edge"><title>representable&#45;&gt;sieve</title>
-<path fill="none" stroke="black" d="M1337.68,-620.941C1284.87,-633.445 1221.93,-648.351 1176.22,-659.175"/>
-<polygon fill="black" stroke="black" points="1175.37,-655.779 1166.45,-661.489 1176.98,-662.591 1175.37,-655.779"/>
+<path fill="none" stroke="black" d="M1337.68,-620.941C1292.79,-631.57 1240.58,-643.934 1197.85,-654.052"/>
+<polygon fill="black" stroke="black" points="1196.97,-650.663 1188.05,-656.373 1198.59,-657.475 1196.97,-650.663"/>
 </g>
 <!-- strong -->
 <g id="node55" class="node"><title>strong</title>
@@ -780,12 +780,12 @@
 </g>
 <!-- sieve&#45;&gt;functor -->
 <g id="edge11" class="edge"><title>sieve&#45;&gt;functor</title>
-<path fill="none" stroke="black" d="M1058.95,-686.379C1028.96,-694.101 990.957,-705.031 958.258,-718 908.315,-737.807 854.047,-766.604 816.662,-787.676"/>
+<path fill="none" stroke="black" d="M1036.92,-692.265C1011.59,-699.289 983.362,-708.044 958.258,-718 908.315,-737.807 854.047,-766.604 816.662,-787.676"/>
 <polygon fill="black" stroke="black" points="814.503,-784.877 807.534,-792.857 817.958,-790.965 814.503,-784.877"/>
 </g>
 <!-- sieve&#45;&gt;profunctor -->
 <g id="edge12" class="edge"><title>sieve&#45;&gt;profunctor</title>
-<path fill="none" stroke="black" d="M1058.98,-674.643C1025.3,-672.086 983.372,-662.847 958.258,-635 884.55,-553.269 994.387,-473.127 922.258,-390 916.155,-382.966 909.011,-377.005 901.207,-371.956"/>
+<path fill="none" stroke="black" d="M1037.03,-672.059C1008.53,-667.417 978.128,-657.033 958.258,-635 884.55,-553.269 994.387,-473.127 922.258,-390 916.155,-382.966 909.011,-377.005 901.207,-371.956"/>
 <polygon fill="black" stroke="black" points="902.891,-368.886 892.498,-366.828 899.339,-374.918 902.891,-368.886"/>
 </g>
 <!-- strong&#45;&gt;profunctor -->
