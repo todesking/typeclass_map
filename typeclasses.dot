@@ -100,7 +100,24 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	conquer :: f a \l }"]
 	decidable [label="{ Decidable f }|{ lose :: (a -\> Void) -\> f a \l\
 	choose :: (a -\> Either b c) -\> f b -\> f c -\> f a \l }"]
+	comonadhoist [label="{ ComonadHoist t }|{ cohoist :: (Comonad w, Comonad v) =\> (forall x. w x -\> v x) -\> t w a -\> t v a \l }"]
+	comonadstore [label="{ ComonadStore s w\n w -\> s }|{ pos :: w a -\> s \l\
+	peek :: s -\> w a -\> a \l\
+	peeks :: (s -\> s) -\> w a -\> a \l\
+	seek :: s -\> w a -\> w a \l\
+	seeks :: (s -\> s) -\> w a -\> w a \l\
+	experiment :: Functor f =\> (s -\> f s) -\> w a -\> f a \l }"]
+	comonadtraced [label="{ ComonadTraced m w \n w -\> m }|{ trace :: m -\> w a -\> a }"]
+	comonadtrans [label="{ ComonadTrans t }|{ lower :: Comonad w =\> t w a -\> w a }"]
+	composition [label="{ Composition o }|{ decompose :: o f g x -\> f (g x) \l\
+	compose :: f (g x) -\> o f g x \l }"]
 
+
+	comonadtrans -> comonad [style="dashed"]
+	comonadtraced -> comonad
+	comonadstore -> functor [style="dashed"]
+	comonadstore -> comonad
+	comonadhoist -> comonad [style="dashed"]
 	monadplus -> alternative
 	monad -> applicative
 	divisible -> contravariant
