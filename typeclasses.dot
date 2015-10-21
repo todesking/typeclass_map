@@ -39,7 +39,7 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	monadstate [label="{ MonadState s m \n m -\> s }|{ get :: m s \l\
 	put :: s -\> m () \l\
 	state :: (s -\> (a, s)) -\> m a \l}"]
-	monaderror [label="{ MonadError e m \n m -\> e }|{ throwErroe :: e -\> m a \l\
+	monaderror [label="{ MonadError e m \n m -\> e }|{ throwError :: e -\> m a \l\
 	catchError :: m a -\> (e -\> m a) -\> m a \l }"]
 	comonad [label="{ Comonad w }|{ extract :: w a -\> a \l }"]
 	bifunctor [label="{ Bifunctor p }|{ bimap :: (a -\> b) -\> (c -\> d) -\> p a c -\> p b d \l\

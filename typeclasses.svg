@@ -327,7 +327,7 @@
 <text text-anchor="middle" x="2217.66" y="-1051.8" font-family="Times,serif" font-size="14.00">MonadError e m </text>
 <text text-anchor="middle" x="2217.66" y="-1037.8" font-family="Times,serif" font-size="14.00"> m &#45;&gt; e</text>
 <polyline fill="none" stroke="black" points="2103.25,-1031 2332.62,-1031 "/>
-<text text-anchor="start" x="2111.25" y="-1015.8" font-family="Times,serif" font-size="14.00">throwErroe :: e &#45;&gt; m a </text>
+<text text-anchor="start" x="2111.25" y="-1015.8" font-family="Times,serif" font-size="14.00">throwError :: e &#45;&gt; m a </text>
 <text text-anchor="start" x="2111.25" y="-1001.8" font-family="Times,serif" font-size="14.00">catchError :: m a &#45;&gt; (e &#45;&gt; m a) &#45;&gt; m a </text>
 </g>
 <!-- monaderror&#45;&gt;monad -->
