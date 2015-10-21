@@ -1,3 +1,3 @@
 # A map of typeclasses
 
-![](./typeclasses.svg)
+![](https://raw.githubusercontent.com/todesking/typeclass_map/master/typeclasses.png)
