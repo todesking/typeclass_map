@@ -84,6 +84,7 @@ digraph {
 	traversable [label="{ Traversable t }|{ traverse :: Applicative f =\> (a -\> f b) -\> t a -\> f (t b) \l\
 	sequenceA :: Applicative f =\> t (f a) -\> f (t a) \l }"]
 
+	traversable1 -> foldable1
 	traversable1 -> traversable
 	traversable1 -> apply [style="dashed"]
 	traversable1 [label="{ Traversable1 }|{ traverse1 :: Apply f =\> (a -\> f b) -\> t a -\> f (t b) \l\
@@ -266,7 +267,7 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	bitraversable [label="{ Bitraversable t }|{ bitraverse :: Applicative f =\> (a -\> f c) -\> (b -\> f d) -\> t a b -\> f (t c d) \l\
 	bisequenceA :: Applicative f =\> t (f a) (f b) -\> f (t a b) \l }"]
 
-	bitraversable1 -> bitraversable
+	bitraversable1 -> {bitraversable, bifoldable1}
 	bitraversable1 -> apply [style="dashed"]
 	bitraversable1 -> traversable1 [style="dashed" arrowhead="none"]
 	bitraversable1 [label="{ Bitraversable1 t }|{ bitraverse1 :: Apply f =\> (a -\> f b) -\> (c -\> f d) -\> t a c -\> f (t b d) \l\
