@@ -59,14 +59,32 @@ digraph {
 	monadfix -> monad
 	monadfix [label="{ MonadFix m }|{ mfix :: (a -\> m a) -\> m a \l}"]
 
-	monadstate -> monad
-	monadstate [label="{ MonadState s m \n m -\> s }|{ get :: m s \l\
-	put :: s -\> m () \l\
-	state :: (s -\> (a, s)) -\> m a \l}"]
-
 	monaderror -> monad
 	monaderror [label="{ MonadError e m \n m -\> e }|{ throwError :: e -\> m a \l\
 	catchError :: m a -\> (e -\> m a) -\> m a \l }"]
+
+	monadcont -> monad
+	monadcont [label="{ MonadCont m }|{ callCC :: ((a -\> m b) -\> m a)-\> m a \l }"]
+
+	monadreader -> monad
+	monadreader [label="{ MonadReader r m \n m -\> r }|{ ask :: m r \l\
+	local :: (r -\> r) -\> m a -\> m a \l\
+	reader :: (r -\> a) -\> m a \l }"]
+
+	monadwriter -> monad
+	monadwriter -> monoid [style="dashed"]
+	monadwriter [label="{ MonadWriter w m \n Monoid w =\> m -\> w }|{ writer :: (a, w) -\> m a \l\
+	tell :: w -\> m () \l\
+	listen :: m a -\> m (a, w) \l\
+	pass :: (a, w -\> w) -\> m a \l }"]
+
+	monadstate -> monad
+	monadstate [label="{ MonadState s m \n m -\> s }|{ get :: m s \l\
+	put :: s -\> m () \l\
+	state :: (s -\> (a, s)) -\> m a \l }"]
+
+	monadrws -> {monadreader, monadwriter, monadstate}
+	monadrws [label="{ MonadRWS r w s m \n m -\> r, m -\> w, m -\> s }"]
 
 	foldable -> monoid [style="dashed"]
 	foldable [label="{ Foldable t }|{ foldMap :: Monoid m =\> (a -\> m) -\> t a -\> m \l\
