@@ -181,7 +181,7 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	rmap :: (b -\> c) -\> p a b -\> p a c \l }"]
 
 	choice -> profunctor
-	choice [label="{ Choice p\n(a.k.a ProChoice?) }|{ left' :: p a b -\> p (Either a c) (Either b c) \l\
+	choice [label="{ Choice p\n(ProChoice@scalaz) }|{ left' :: p a b -\> p (Either a c) (Either b c) \l\
 	right' :: p a b -\> p (Either c a) (Either c b) \l }"]
 
 	profunctoradjunction -> profunctor
