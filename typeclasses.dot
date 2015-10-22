@@ -2,11 +2,31 @@ digraph {
 	graph[rankdir="RL"]
 	node[shape="record"]
 
-	category -> semigroupoid
-	category [label="{ Category }|{ id :: cat a a \l\
-	(.) = o \l }"]
+
+	// *
+
+	monoid [label="{ Monoid m}|{ mempty :: m \l\
+	mappend :: m -\> m -\> m \l}"]
+
+	semigroup [label="{ Semigroup a }|{ \<\> :: a -\> a -\> a }"]
+
+
+	// (* -> *)
 
 	functor [label="{ Functor }|{ fmap(\<$\>) :: (a -\> b) -\> f a -\> f b }"]
+
+	apply -> functor
+	apply [label="{ Apply f }|{ (\<.\>) :: f (a -\> b) -\> f a -\> f b \l}"]
+
+	bind -> apply
+	bind [label="{ Bind }|{ (\>\>-) :: m a -\> (a -\> m b) -\> m b \l\
+	join :: m (m a) -\> m a \l}"]
+
+	alt -> functor
+	alt -> applicative [style="dotted"]
+	alt [label="{ Alt f }|{ (\<!\>) :: f a -\> f a -\> f a \l\
+	some :: Applicative f =\> f a -\> f [a] \l\
+	many :: Applicative f =\> f a -\> f [a] \l }"]
 
 	applicative -> apply
 	applicative [label="{ Applicative }|{ pure :: a -\> f a \l\
@@ -20,6 +40,10 @@ digraph {
 	monad -> applicative
 	monad  [label="{ Monad }|{ (\>\>=) = \>\>- \lreturn :: a -\> m a \l}"]
 
+	comonad -> extend
+	comonad -> monad [style="dashed" arrowhead="none"]
+	comonad [label="{ Comonad w }|{ extract :: w a -\> a \l }"]
+
 	monadplus -> {monad, plus}
 	monadplus -> alternative
 	monadplus [label="{ MonadPlus }|{ mzero = zero }"]
@@ -28,15 +52,41 @@ digraph {
 	monadzip [label="{ MonadZip }|{ mzip :: m a -\> m b -\> m (a, b)\l\
 	mzipWith :: (a -\> b -\> c) -\> m a -\> m b -\> m c \l}"]
 
+	monadfix -> monad
+	monadfix [label="{ MonadFix }|{ mfix :: (a -\> m a) -\> m a \l}"]
+
+	contravariant [label="{ Contravariant }|{ contramap :: (a -\> b) -\>  b -\> f a }"]
+
+	divisible -> contravariant
+	divisible [label="{ Divisible f }|{ divide :: (a -\> (b, c)) -\> f b -\> f c -\> f a \l\
+	conquer :: f a \l }"]
+
+	decidable -> divisible
+	decidable [label="{ Decidable f }|{ lose :: (a -\> Void) -\> f a \l\
+	choose :: (a -\> Either b c) -\> f b -\> f c -\> f a \l }"]
+
+	composition [label="{ Composition o }|{ decompose :: o f g x -\> f (g x) \l\
+	compose :: f (g x) -\> o f g x \l }"]
+
+
+	// (* -> * -> *)
+
+	groupoid -> semigroupoid
+	groupoid [label="{ Groupoid }|{ inv :: k a b -\> k b a }"]
+
+	category -> semigroupoid
+	category [label="{ Category }|{ id :: cat a a \l\
+	(.) = o \l }"]
+
+	ob -> semigroupoid
+	ob [label="{ Ob k }|{ semiid :: k a a \l }"]
+
 	arrow -> category
 	arrow [label="{ Arrow }|{ arr :: (b -\> c) -\> a b c \l\
 first :: a b c -\> a (b, d) (c, d) \l\
 second :: a b c -\> a (d, b) (d, c) \l\
 (***) :: a b c -\> a b' c' -\> a (b, b') (c, c')\l\
 (&&&) :: a b c -\> a b c' -\> a b (c, c')\l }"]
-
-	monadfix -> monad
-	monadfix [label="{ MonadFix }|{ mfix :: (a -\> m a) -\> m a \l}"]
 
 	arrowplus -> arrowzero
 	arrowplus [label="{ ArrowPlus }|{ (\<+\>) :: a b c -\> a b c -\> a b c \l }"]
@@ -62,19 +112,24 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	cca -> arrowinit
 	cca [label="{Causal Commutative Arrows(CCA) }"]
 
-	monoid [label="{ Monoid m}|{ mempty :: m \l\
-	mappend :: m -\> m -\> m \l}"]
-
 	foldable -> monoid [style="dashed"]
 	foldable [label="{ Foldable t}|{ foldMap :: Monoid m =\> (a -\> m) -\> t a -\> m \l\
 	foldr :: (a -\> b -\> b) -\> b -\> t a -\> b \l}"]
+
+	foldable1 -> foldable
+	foldable1 -> semigroup [style="dashed"]
+	foldable1 [label="{ Foldable1 t }|{ fold1 :: Semigroup m =\> t m-\> m \l\
+	foldMap1 :: Semigroup m =\> (a -\> m)-\> t a -\> m \l }"]
 
 	traversable -> {foldable, functor}
 	traversable -> applicative [style="dashed"]
 	traversable [label="{ Traversable }|{ traverse :: Applicative f =\> (a -\> f b) -\> t a -\> f (t b) \l\
 	sequenceA :: Applicative f =\> t (f a) -\> f (t a) \l }"]
 
-	contravariant [label="{ Contravariant }|{ contramap :: (a -\> b) -\>  b -\> f a }"]
+	traversable1 -> traversable
+	traversable1 -> apply [style="dashed"]
+	traversable1 [label="{ Traversable1 }|{ traverse1 :: Apply f =\> (a -\> f b) -\> t a -\> f (t b) \l\
+	sequence1 :: Apply f =\> t (f b) -\> f (t b) \l }"]
 
 	monadstate -> monad
 	monadstate [label="{ MonadState s m \n m -\> s }|{ get :: m s \l\
@@ -85,10 +140,6 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	monaderror [label="{ MonadError e m \n m -\> e }|{ throwError :: e -\> m a \l\
 	catchError :: m a -\> (e -\> m a) -\> m a \l }"]
 
-	comonad -> extend
-	comonad -> monad [style="dashed" arrowhead="none"]
-	comonad [label="{ Comonad w }|{ extract :: w a -\> a \l }"]
-
 	bifunctor -> functor [style="dashed" arrowhead="none"]
 	bifunctor [label="{ Bifunctor p }|{ bimap :: (a -\> b) -\> (c -\> d) -\> p a c -\> p b d \l\
 	first :: (a -\> b) -\> p a c -\> p b c \l\
@@ -98,22 +149,8 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	biapply -> apply [style="dashed" arrowhead="none"]
 	biapply [label="{ Biapply p }|{ (\<\<.\>\>) :: p (a -\> b) (c -\> d) -\> p a c -\> p b d \l }"]
 
-	alt -> functor
-	alt -> applicative [style="dotted"]
-	alt [label="{ Alt f }|{ (\<!\>) :: f a -\> f a -\> f a \l\
-	some :: Applicative f =\> f a -\> f [a] \l\
-	many :: Applicative f =\> f a -\> f [a] \l }"]
-
-	apply -> functor
-	apply [label="{ Apply f }|{ (\<.\>) :: f (a -\> b) -\> f a -\> f b \l}"]
-
-	semigroup [label="{ Semigroup a }|{ \<\> :: a -\> a -\> a }"]
 
 	semigroupoid [label="{ Semigroupoid c }|{ o :: c j k -\> c i j -\> c i k \l }"]
-
-	bind -> apply
-	bind [label="{ Bind }|{ (\>\>-) :: m a -\> (a -\> m b) -\> m b \l\
-	join :: m (m a) -\> m a \l}"]
 
 	bindtrans -> monadtrans
 	bindtrans -> bind [style="dashed"]
@@ -129,16 +166,15 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	plus -> alt
 	plus [label="{ Plus f }|{ zero :: f a \l }"]
 
-	groupoid -> semigroupoid
-	groupoid [label="{ Groupoid }|{ inv :: k a b -\> k b a }"]
-
 	bifoldable -> foldable [style="dashed" arrowhead="none"]
 	bifoldable -> monoid [style="dashed"]
+	bifoldable -> foldable [style="dashed" arrowhead="none"]
 	bifoldable [label="{ Bifoldable p}|{ bifold :: Monoid m =\> p m m -\> m \l\
 	bifoldMap :: Monoid m =\> (a -\> m) -\> (b -\> m) -\> p a b -\> m \l }"]
 
 	bifoldable1 -> bifoldable
 	bifoldable1 -> semigroup [style="dashed"]
+	bifoldable1 -> foldable1 [style="dashed" arrowhead="none"]
 	bifoldable1 [label="{ Bifoldable1 }|{ bifold1 :: Semigroup m =\> t m m -\> m \l\
 	bifoldMap1 :: Semigroup m =\> (a -\> m) -\> (b -\> m) -\> t a b -\> m \l }"]
 
@@ -150,30 +186,13 @@ second :: a b c -\> a (d, b) (d, c) \l\
 
 	bitraversable1 -> bitraversable
 	bitraversable1 -> apply [style="dashed"]
+	bitraversable1 -> traversable1 [style="dashed" arrowhead="none"]
 	bitraversable1 [label="{ Bitraversable1 t }|{ bitraverse1 :: Apply f =\> (a -\> f b) -\> (c -\> f d) -\> t a c -\> f (t b d) \l\
 	bisequence1 :: Apply f =\> t (f a) (f b) -\> f (t a b) \l }"]
-
-	foldable1 -> foldable
-	foldable1 -> semigroup [style="dashed"]
-	foldable1 [label="{ Foldable1 t }|{ fold1 :: Semigroup m =\> t m-\> m \l\
-	foldMap1 :: Semigroup m =\> (a -\> m)-\> t a -\> m \l }"]
-
-	traversable1 -> traversable
-	traversable1 -> apply [style="dashed"]
-	traversable1 [label="{ Traversable1 }|{ traverse1 :: Apply f =\> (a -\> f b) -\> t a -\> f (t b) \l\
-	sequence1 :: Apply f =\> t (f b) -\> f (t b) \l }"]
-
-	ob -> semigroupoid
-	ob [label="{ Ob k }|{ semiid :: k a a \l }"]
 
 	profunctor [label="{ Profunctor p }|{ dimap :: (a -\>b) (c -\> d) -\> p b c -\> p a d \l\
 	lmap :: (a -\> b) -\> p b c -\> p a c \l\
 	rmap :: (b -\> c) -\> p a b -\> p a c \l }"]
-
-	costrong -> profunctor
-	costrong -> arrowloop [style="dashed" arrowhead="none"]
-	costrong [label="{ Costrong p \n (Analogue of ArrowLoop where loop = unfirst) }|{ unfirst :: p (a, d) (b, d) -\> p a b \l\
-	unsecond :: p (d, a) (d, b) -\> p a b \l }"]
 
 	choice -> profunctor
 	choice [label="{ Choice p\n(a.k.a ProChoice?) }|{ left' :: p a b -\> p (Either a c) (Either b c) \l\
@@ -205,23 +224,23 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	corepresentable [label="{ Corepresentable p }|{ type Corep :: * -\> * \l\
 	cotabulate :: (Corep p d -\> c) -\> p d c \l }"]
 
-	cosieve -> {profunctor, functor}
-	cosieve [label="{ Cosieve p f \n p -\> f }|{ cosieve :: p a b -\> f a -\> b \l }"]
-
 	sieve -> {profunctor, functor}
 	sieve [label="{ Sieve p f \n p -\> f }|{ sieve :: p a b -\> a -\> f b \l }"]
+
+	cosieve -> {profunctor, functor}
+	cosieve [label="{ Cosieve p f \n p -\> f }|{ cosieve :: p a b -\> f a -\> b \l }"]
 
 	strong -> profunctor
 	strong [label="{ Strong p }|{ first' :: p a b -\> p (a, c) (b, c) \l\
 	second' :: p a b -\> p (c, a) (c, b) \l }"]
 
-	divisible -> contravariant
-	divisible [label="{ Divisible f }|{ divide :: (a -\> (b, c)) -\> f b -\> f c -\> f a \l\
-	conquer :: f a \l }"]
+	costrong -> profunctor
+	costrong -> arrowloop [style="dashed" arrowhead="none"]
+	costrong [label="{ Costrong p \n (Analogue of ArrowLoop where loop = unfirst) }|{ unfirst :: p (a, d) (b, d) -\> p a b \l\
+	unsecond :: p (d, a) (d, b) -\> p a b \l }"]
 
-	decidable -> divisible
-	decidable [label="{ Decidable f }|{ lose :: (a -\> Void) -\> f a \l\
-	choose :: (a -\> Either b c) -\> f b -\> f c -\> f a \l }"]
+
+	// comonad
 
 	comonadhoist -> comonad [style="dashed"]
 	comonadhoist [label="{ ComonadHoist t }|{ cohoist :: (Comonad w, Comonad v) =\> (forall x. w x -\> v x) -\> t w a -\> t v a \l }"]
@@ -240,10 +259,5 @@ second :: a b c -\> a (d, b) (d, c) \l\
 
 	comonadtrans -> comonad [style="dashed"]
 	comonadtrans [label="{ ComonadTrans t }|{ lower :: Comonad w =\> t w a -\> w a }"]
-
-	composition [label="{ Composition o }|{ decompose :: o f g x -\> f (g x) \l\
-
-	compose :: f (g x) -\> o f g x \l }"]
-
 
 }
