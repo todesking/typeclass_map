@@ -5,10 +5,11 @@ digraph {
 
 	// *
 
-	monoid [label="{ Monoid m}|{ mempty :: m \l\
-	mappend :: m -\> m -\> m \l}"]
-
 	semigroup [label="{ Semigroup a }|{ \<\> :: a -\> a -\> a }"]
+
+	monoid -> semigroup
+	monoid [label="{ Monoid m}|{ mempty :: m \l\
+	mappend = \<\> \l}"]
 
 
 	// (* -> *)
@@ -27,12 +28,12 @@ digraph {
 
 	alt -> functor
 	alt -> applicative [style="dashed"]
-	alt [label="{ Alt f }|{ (\<!\>) :: f a -\> f a -\> f a \l\
+	alt [label="{ Alt f \n (Plus@scalaz) }|{ (\<!\>) :: f a -\> f a -\> f a \l\
 	some :: Applicative f =\> f a -\> f [a] \l\
 	many :: Applicative f =\> f a -\> f [a] \l }"]
 
 	plus -> alt
-	plus [label="{ Plus f }|{ zero :: f a \l }"]
+	plus [label="{ Plus f \n (PlusEmpty@scalaz) }|{ zero :: f a \l }"]
 
 	applicative -> apply
 	applicative [label="{ Applicative f }|{ pure :: a -\> f a \l\
@@ -107,7 +108,7 @@ digraph {
 	sequence1 :: Apply f =\> t (f b) -\> f (t b) \l }"]
 
 	extend -> functor
-	extend [label="{ Extend w }|{ duplicated :: w a -\> w (w a) \l\
+	extend [label="{ Extend w \n (Cobind@scalaz)}|{ duplicated :: w a -\> w (w a) \l\
 	extended :: (w a -\> b) -\> w a -\> w b \l }"]
 
 
@@ -131,7 +132,7 @@ digraph {
 	invariant2 [label="{ Invariant2 f \n Invariant for * -\> * -\> * }|{\
 	invmap2 :: (a -\> c) -\> (c -\> a) -\> (b -\> d) -\> (d -\> b) -\> f a b -\> f c d \l }"]
 
-	semigroupoid [label="{ Semigroupoid c }|{ o :: c j k -\> c i j -\> c i k \l }"]
+	semigroupoid [label="{ Semigroupoid c \n (Compose@scalaz) }|{ o :: c j k -\> c i j -\> c i k \l }"]
 
 	groupoid -> semigroupoid
 	groupoid [label="{ Groupoid k }|{ inv :: k a b -\> k b a }"]
@@ -143,7 +144,7 @@ digraph {
 	ob -> semigroupoid
 	ob [label="{ Ob k }|{ semiid :: k a a \l }"]
 
-	arrow -> category
+	arrow -> {category, strong}
 	arrow [label="{ Arrow a }|{ arr :: (b -\> c) -\> a b c \l\
 first :: a b c -\> a (b, d) (c, d) \l\
 second :: a b c -\> a (d, b) (d, c) \l\
@@ -153,7 +154,7 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	arrowplus -> arrowzero
 	arrowplus [label="{ ArrowPlus a }|{ (\<+\>) :: a b c -\> a b c -\> a b c \l }"]
 
-	arrowzero -> {arrow, monadplus}
+	arrowzero -> arrow
 	arrowzero [label="{ ArrowZero a }|{ zeroArrow :: a b c }"]
 
 	arrowinit -> arrowloop
@@ -220,8 +221,7 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	second' :: p a b -\> p (c, a) (c, b) \l }"]
 
 	costrong -> profunctor
-	costrong -> arrowloop [style="dashed" arrowhead="none"]
-	costrong [label="{ Costrong p \n (Analogue of ArrowLoop where loop = unfirst) }|{ unfirst :: p (a, d) (b, d) -\> p a b \l\
+	costrong [label="{ Costrong p }|{ unfirst :: p (a, d) (b, d) -\> p a b \l\
 	unsecond :: p (d, a) (d, b) -\> p a b \l }"]
 
 
