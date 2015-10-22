@@ -160,7 +160,7 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	arrowinit -> arrowloop
 	arrowinit[label="{ ArrowInit a }|{ init :: b -\> a b b }"]
 
-	arrowchoice -> arrow
+	arrowchoice -> {arrow, choice}
 	arrowchoice[label="{ ArrowChoice a }|{ left :: a b c -\> a (Either b d) (Either c d) \l\
 	right :: a b c -\> a (Either d b) (Either d c)\l\
 	(+++) :: a b c -\> a b' c' -\> a (Either b b') (Either c c')\l\
@@ -169,7 +169,7 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	arrowapply -> arrow
 	arrowapply [label="{ ArrowApply a }|{ app :: a (a b c, b) c }"]
 
-	arrowloop -> arrow
+	arrowloop -> {arrow, costrong}
 	arrowloop [label="{ ArrowLoop a }|{ loop :: a (b, d) (c, d) -\> a b c }"]
 
 	cca -> arrowinit
