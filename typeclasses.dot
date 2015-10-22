@@ -13,6 +13,9 @@ digraph {
 
 	// (* -> *)
 
+	invariant [label="{ Invariant f }|{ invmap :: (a -\> b) -\> (b -\> a) -\> f a -\> f b }"]
+
+	functor -> invariant
 	functor [label="{ Functor f }|{ fmap(\<$\>) :: (a -\> b) -\> f a -\> f b }"]
 
 	apply -> functor
@@ -107,6 +110,9 @@ digraph {
 
 	// (* -> * -> *)
 
+	invariant2 [label="{ Invariant2 f \n Invariant for * -\> * -\> * }|{\
+	invmap2 :: (a -\> c) -\> (c -\> a) -\> (b -\> d) -\> (d -\> b) -\> f a b -\> f c d \l }"]
+
 	semigroupoid [label="{ Semigroupoid c }|{ o :: c j k -\> c i j -\> c i k \l }"]
 
 	groupoid -> semigroupoid
@@ -150,6 +156,7 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	cca -> arrowinit
 	cca [label="{Causal Commutative Arrows(CCA) }"]
 
+	profunctor -> invariant2
 	profunctor [label="{ Profunctor p }|{ dimap :: (a -\>b) (c -\> d) -\> p b c -\> p a d \l\
 	lmap :: (a -\> b) -\> p b c -\> p a c \l\
 	rmap :: (b -\> c) -\> p a b -\> p a c \l }"]
@@ -231,6 +238,7 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	comonadtraced [label="{ ComonadTraced m w \n w -\> m }|{ trace :: m -\> w a -\> a }"]
 
 	// bi
+	bifunctor -> invariant2
 	bifunctor -> functor [style="dashed" arrowhead="none"]
 	bifunctor [label="{ Bifunctor p }|{ bimap :: (a -\> b) -\> (c -\> d) -\> p a c -\> p b d \l\
 	first :: (a -\> b) -\> p a c -\> p b c \l\

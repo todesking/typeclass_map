@@ -20,4 +20,5 @@
 * [Haskell Bifunctors package](https://hackage.haskell.org/package/bifunctors): Biapplicative, Bifoldable, Bifunctor, Bitraversable
 * [Haskell Profunctors package](https://hackage.haskell.org/package/profunctors): Profunctor, Strong, Choice, Costrong, Cochoice,
     ProfunctorAdjunction, Closed, ProfunctorFunctor, ProfunctorComonad, ProfunctorMonad, Representable, Sieve, Cosieve
+* [Haskell Invariant package](https://hackage.haskell.org/package/invariant): Invariant, Invariant2
 * [Functor-Applicative-Monad Proposal](https://wiki.haskell.org/Functor-Applicative-Monad_Proposal): Monad is Applicative, MonadPlus is Alternative.
