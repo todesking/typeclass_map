@@ -122,13 +122,18 @@ digraph {
 
 	contravariant [label="{ Contravariant f }|{ contramap :: (a -\> b) -\>  b -\> f a }"]
 
-	divisible -> contravariant
-	divisible [label="{ Divisible f }|{ divide :: (a -\> (b, c)) -\> f b -\> f c -\> f a \l\
-	conquer :: f a \l }"]
+	divide -> contravariant
+	divide [label="{ Divide f }|{ divide :: (a -\> (b, c)) -\> f b -\> f c -\> f a \l }"]
 
-	decidable -> divisible
+	divisible -> divide
+	divisible [label="{ Divisible f }|{ conquer :: f a \l }"]
+
+	decide -> divide
+	decide [label="{ Decide f }|{ decide :: (a -\> Either b c) -\> f b -\> f c -\> f a \l }"]
+
+	decidable -> {decide, divisible}
 	decidable [label="{ Decidable f }|{ lose :: (a -\> Void) -\> f a \l\
-	choose :: (a -\> Either b c) -\> f b -\> f c -\> f a \l }"]
+	choose = decide \l }"]
 
 	composition [label="{ Composition o }|{ decompose :: o f g x -\> f (g x) \l\
 	compose :: f (g x) -\> o f g x \l }"]
