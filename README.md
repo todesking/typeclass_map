@@ -22,4 +22,5 @@
     ProfunctorAdjunction, Closed, ProfunctorFunctor, ProfunctorComonad, ProfunctorMonad, Representable, Sieve, Cosieve
 * [Haskell Invariant package](https://hackage.haskell.org/package/invariant): Invariant, Invariant2
 * [Haskell mtl package](https://hackage.haskell.org/package/mtl): MonadReader, MonadWriter, MonadState, MonadRWS, MonadError
+* [Haskell unfoldable package](https://hackage.haskell.org/package/unfoldable): Unfoldable, Biunfoldable, Unfolder
 * [Functor-Applicative-Monad Proposal](https://wiki.haskell.org/Functor-Applicative-Monad_Proposal): Monad is Applicative, MonadPlus is Alternative.

@@ -96,6 +96,14 @@ digraph {
 	foldable1 [label="{ Foldable1 t }|{ fold1 :: Semigroup m =\> t m-\> m \l\
 	foldMap1 :: Semigroup m =\> (a -\> m)-\> t a -\> m \l }"]
 
+	unfoldable -> unfolder [style="dashed"]
+	unfoldable -> foldable [style="dashed" arrowhead="none"]
+	unfoldable [label="{ Unfoldable t }|{ unfold :: Unfolder f =\> f a -\> f (t a) \l }"]
+
+	unfolder -> alternative
+	unfolder [label="{ Unfolder f }|{ choose :: [f x] -\> f x \l\
+	chooseInt :: Int =\> f Int \l }"]
+
 	traversable -> {foldable, functor}
 	traversable -> applicative [style="dashed"]
 	traversable [label="{ Traversable t }|{ traverse :: Applicative f =\> (a -\> f b) -\> t a -\> f (t b) \l\
@@ -277,6 +285,10 @@ second :: a b c -\> a (d, b) (d, c) \l\
 	bifoldable1 -> foldable1 [style="dashed" arrowhead="none"]
 	bifoldable1 [label="{ Bifoldable1 t }|{ bifold1 :: Semigroup m =\> t m m -\> m \l\
 	bifoldMap1 :: Semigroup m =\> (a -\> m) -\> (b -\> m) -\> t a b -\> m \l }"]
+
+	biunfoldable -> unfolder [style="dashed"]
+	biunfoldable -> {unfoldable, bifoldable} [style="dashed" arrowhead="none"]
+	biunfoldable [label="{ Biunfoldable t }|{ biunfold :: Unfolder f =\> f a -\> f b -\> f (t a b) \l }"]
 
 	bitraversable -> applicative [style="dashed"]
 	bitraversable -> {bifunctor, bifoldable}
