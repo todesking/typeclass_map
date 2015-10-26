@@ -23,5 +23,6 @@
 * [Haskell Invariant package](https://hackage.haskell.org/package/invariant): Invariant, Invariant2
 * [Haskell mtl package](https://hackage.haskell.org/package/mtl): MonadReader, MonadWriter, MonadState, MonadRWS, MonadError
 * [Haskell unfoldable package](https://hackage.haskell.org/package/unfoldable): Unfoldable, Biunfoldable, Unfolder
+* [Haskell free package](https://hackage.haskell.org/package/free): MonadFree, ComonadCofree
 * [purescrit-contravariant](https://github.com/purescript/purescript-contravariant): Divide, Decide
 * [Functor-Applicative-Monad Proposal](https://wiki.haskell.org/Functor-Applicative-Monad_Proposal): Monad is Applicative, MonadPlus is Alternative.

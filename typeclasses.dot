@@ -50,6 +50,13 @@ digraph {
 	comonad -> monad [style="dashed" arrowhead="none"]
 	comonad [label="{ Comonad w }|{ extract :: w a -\> a \l }"]
 
+	comonadcofree -> comonad
+	comonadcofree -> functor [style="dashed"]
+	comonadcofree [label="{ ComonadCofree w f \n Functor f =\> w -\> f }|{ unwrap :: w a -\> f (w a) \l }"]
+
+	monadfree -> monad
+	monadfree [label="{ MonadFree f m \n m -\> f }|{ wrap :: f (m a) -\> m a }"]
+
 	monadplus -> {monad, alternative}
 	monadplus [label="{ MonadPlus m }|{ mzero = zero }"]
 
