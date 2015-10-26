@@ -1,4 +1,4 @@
-digraph {
+digraph "typeclass map"{
 	graph[rankdir="RL"]
 	node[shape="record"]
 
