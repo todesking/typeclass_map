@@ -26,3 +26,4 @@
 * [Haskell free package](https://hackage.haskell.org/package/free): MonadFree, ComonadCofree
 * [purescrit-contravariant](https://github.com/purescript/purescript-contravariant): Divide, Decide
 * [Functor-Applicative-Monad Proposal](https://wiki.haskell.org/Functor-Applicative-Monad_Proposal): Monad is Applicative, MonadPlus is Alternative.
+* [Haskell MonadFail proposal](https://wiki.haskell.org/MonadFail_Proposal): MonadFail
