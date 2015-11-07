@@ -54,6 +54,9 @@ digraph "typeclass map"{
 	comonadcofree -> functor [style="dashed"]
 	comonadcofree [label="{ ComonadCofree w f \n Functor f =\> w -\> f }|{ unwrap :: w a -\> f (w a) \l }"]
 
+	monadfail -> monad
+	monadfail [label="{ MonadFail m }|{ fail :: String -\> m a }"]
+
 	monadfree -> monad
 	monadfree [label="{ MonadFree f m \n m -\> f }|{ wrap :: f (m a) -\> m a }"]
 
